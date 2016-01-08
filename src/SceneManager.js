@@ -17,6 +17,7 @@ export default class SceneManager extends PIXI.Container{
 
   addScene(scene){
     if(this.scenes.indexOf(scene) !== -1)return this;
+    scene.manager = this;
     this.scenes.push(scene);
     return this;
   }
@@ -63,7 +64,8 @@ export default class SceneManager extends PIXI.Container{
     this._scene = value;
     this._scene.manager = this;
     this._scene.position.set(this.renderer.width/2, this.renderer.height/2);
-    this.addScene(value);
+    this.addScene(this._scene);
+    this.scene._initialize();
 
     this.resizeScenes();
 
