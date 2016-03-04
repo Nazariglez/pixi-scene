@@ -1,4 +1,4 @@
-pixi-scene
+pixi-scene - Under Development
 ======================
 
 pixi-scene is a plugin for Pixi.js v3.0.8 or higher to create ...

@@ -14,6 +14,7 @@ export default class Scene extends PIXI.Container{
 
   _initialize(){
     if(this.initialized)return;
+    this.initialized = true;
     this.init();
   }
 }
