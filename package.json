@@ -1,6 +1,6 @@
 {
   "name": "pixi-scene",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "pixi-scene is a plugin for Pixi.js v3.0.8 or higher to create ...",
   "main": "./build/pixi-scene.js",
   "author": "Nazariglez <nazari.nz@gmail.com> (http://www.nazariglez.com)",

@@ -12,7 +12,14 @@ export default class SceneManager extends PIXI.Container{
     this._fixedWidth = 0;
     this._fixedHeight = 0;
 
+    this._last = 0;
+
     this.scene = new Scene('initial');
+  }
+
+  update(delta){
+    if(!delta && delta !== 0)delta = this._getDeltaMS()/1000;
+    super.update(delta);
   }
 
   addScene(scene){
@@ -53,6 +60,14 @@ export default class SceneManager extends PIXI.Container{
 
   _resizeScene(scene, scale){
     scene.scale.set(scale);
+  }
+
+  _getDeltaMS(){
+    if(this._last === 0)this._last = Date.now();
+    let now = Date.now();
+    let deltaMS = now-this._last;
+    this._last = now;
+    return deltaMS;
   }
 
   get scene(){

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Pixi.js Test</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/3.0.8/pixi.js"></script>
+  <script src="../pixi-tween/build/pixi-tween.js"></script>
+  <script src="../pixi-timer/build/pixi-timer.js"></script>
   <script src="build/pixi-scene.js"></script>
   <style>
     html, body{
@@ -32,6 +34,7 @@
 
     function animate(){
       window.requestAnimationFrame(animate);
+      stage.update();
       renderer.render(stage);
     }
 
