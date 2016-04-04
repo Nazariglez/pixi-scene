@@ -22,6 +22,10 @@ export default class SceneManager extends PIXI.Container{
     super.update(delta);
   }
 
+  renderSceneByName(name){
+    this.scene = this.getSceneByName(name);
+  }
+
   addScene(scene){
     if(this.scenes.indexOf(scene) !== -1)return this;
     scene.manager = this;

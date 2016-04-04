@@ -19,11 +19,10 @@
 </head>
 <body>
   <script>
+    console.log('hehehe');
     var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.view);
     var stage = new PIXI.SceneManager(renderer);
-    stage.fixedWidth = 600;
-    stage.fixedHeight = 800;
     var scene = stage.createScene('basic');
 
     var t = new PIXI.Graphics()
@@ -38,27 +37,32 @@
       renderer.render(stage);
     }
 
+    const RES_X = 600;
+    const RES_Y = 800;
+
+    var world = scene.createWorld(RES_X, RES_Y);
+
     var topLeft = new PIXI.Sprite(t);
-    topLeft.position.set(-stage.fixedWidth/2, -stage.fixedHeight/2);
+    topLeft.position.set(-RES_X/2, -RES_Y/2);
     topLeft.anchor.set(0);
-    scene.addChild(topLeft);
+    world.addChild(topLeft);
 
     var topRight = new PIXI.Sprite(t);
-    topRight.position.set(stage.fixedWidth/2, -stage.fixedHeight/2);
+    topRight.position.set(RES_X/2, -RES_Y/2);
     topRight.anchor.set(1,0);
-    scene.addChild(topRight);
+    world.addChild(topRight);
 
     var bottomLeft = new PIXI.Sprite(t);
-    bottomLeft.position.set(-stage.fixedWidth/2, stage.fixedHeight/2);
+    bottomLeft.position.set(-RES_X/2, RES_Y/2);
     bottomLeft.anchor.set(0,1);
-    scene.addChild(bottomLeft);
+    world.addChild(bottomLeft);
 
     var bottomRight = new PIXI.Sprite(t);
-    bottomRight.position.set(stage.fixedWidth/2, stage.fixedHeight/2);
+    bottomRight.position.set(RES_X/2, RES_Y/2);
     bottomRight.anchor.set(1);
-    scene.addChild(bottomRight);
+    world.addChild(bottomRight);
 
-
+    this.stage.renderSceneByName("basic");
     animate();
   </script>
 </body>

@@ -1,18 +1,27 @@
 import PIXI from 'pixi.js';
+import World from './World';
 
 export default class Scene extends PIXI.Container{
   constructor(name){
     super();
     this.name = name;
     this.manager = null;
+    this.world = null;
     this.initialized = false;
 
     this.tweenManager = new PIXI.tween.TweenManager();
     this.timerManager = new PIXI.timer.TimerManager();
   }
 
-  init(){
-    //When the scene is renderer for the first time
+  createWorld(resolutionX, resolutionY){
+    this.world = new World(this);
+    this.addChild(this.world);
+    if(resolutionX||resolutionY){
+      this.world.resolutionX = resolutionX;
+      this.world.resolutionY = resolutionY;
+      this.world.checkResolution();
+    }
+    return this.world;
   }
 
   update(delta){
@@ -24,6 +33,6 @@ export default class Scene extends PIXI.Container{
   _initialize(){
     if(this.initialized)return;
     this.initialized = true;
-    this.init();
+    this.emit('init');
   }
 }
