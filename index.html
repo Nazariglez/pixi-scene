@@ -22,7 +22,7 @@
     console.log('hehehe');
     var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.view);
-    var stage = new PIXI.SceneManager(renderer);
+    var stage = new PIXI.scene.SceneManager(renderer);
     var scene = stage.createScene('basic');
 
     var t = new PIXI.Graphics()
